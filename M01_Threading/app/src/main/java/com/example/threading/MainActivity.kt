@@ -1,9 +1,9 @@
 package com.example.threading
 
+import android.os.AsyncTask
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -37,13 +37,45 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        txt_primes.visibility = View.INVISIBLE
-        progressVisibility(true)
-        val primeNumbers = primes(16000).take(16000).joinToString(", ")
-        txt_primes.text = "Primes: $primeNumbers"
-        progressVisibility(false)
-        txt_primes.visibility = View.VISIBLE
+        class MyAsyncTask : AsyncTask<Unit, Int, String>() {
+            override fun onPreExecute() {
+                txt_primes.visibility = View.INVISIBLE
+                progressVisibility(true)
+
+                super.onPreExecute()
+            }
+
+            override fun doInBackground(vararg p0: Unit?): String {
+                val primeNumbers = primes(16000).take(16000).joinToString(", ")
+                return "Primes: $primeNumbers"
+            }
+
+            override fun onPostExecute(result: String?) {
+                progressVisibility(false)
+                txt_primes.text = result
+                txt_primes.visibility = View.VISIBLE
+
+                super.onPostExecute(result)
+            }
+
+            override fun onCancelled(result: String?) {
+                super.onCancelled(result)
+            }
+
+            override fun onCancelled() {
+                super.onCancelled()
+            }
+        }
+
+        var task = MyAsyncTask()
+        task.execute(txt_primes.text.toString() as Unit)
+        task.cancel(true)
+
+    }
 
 
+
+    override fun onStop() {
+        super.onStop()
     }
 }
