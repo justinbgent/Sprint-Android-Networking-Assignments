@@ -1,14 +1,27 @@
 package com.lambdaschool.basicandroidnetworking.http
 
+import android.annotation.SuppressLint
+import android.content.Context
+import android.net.ConnectivityManager
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.Gson
 import com.lambdaschool.basicandroidnetworking.R
+import com.lambdaschool.basicandroidnetworking.model.AdviceMsg
 import kotlinx.android.synthetic.main.activity_http.*
+import org.json.JSONObject
+import java.io.BufferedReader
+import java.io.IOException
+import java.io.InputStreamReader
 import java.lang.ref.WeakReference
+import java.net.HttpURLConnection
+import java.net.MalformedURLException
+import java.net.URL
+import java.net.UnknownHostException
 
 /**
  * Activity showcases networking calls using HTTPUrlConnection and AsyncTask
@@ -49,12 +62,25 @@ class HttpActivity : AppCompatActivity() {
 
         fetchNetworkAPIButton.setOnClickListener {
             // TODO: Check for network connection. If connected, fetch data, else notify user
+            if (isConnected()){
+                // Launch AsyncTask for HTTP cal
+                AdviceAsyncTask(this).execute()
+            }else{
+                Toast.makeText(this, "No internet connection", Toast.LENGTH_SHORT)
+            }
         }
     }
 
     // TODO: Create a function for checking the network connection
+    private fun isConnected(): Boolean {
+        val connectivityManager =
+            getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val networkInfo = connectivityManager.activeNetworkInfo
+        return networkInfo?.isConnected == true
+    }
 
     // TODO: Run code in the background (not on UI thread); ie. for networking calls
+    @SuppressLint("NewApi")
     private class AdviceAsyncTask // only retain a weak reference to the activity
     internal constructor(context: HttpActivity) : AsyncTask<Void, Void, String>() {
 
@@ -69,6 +95,49 @@ class HttpActivity : AppCompatActivity() {
         }
 
         override fun doInBackground(vararg v: Void): String? {
+
+            //Open a connection
+            var c: HttpURLConnection? = null
+            var u: URL? = null
+
+            try {
+                u = URL(ADVICE_API_URL)
+                c = u.openConnection() as HttpURLConnection
+
+                // Prepare request
+                c.apply {
+                    setRequestProperty("Content-length", "0")
+                    requestMethod = "GET"
+                    useCaches = false
+                    allowUserInteraction = false
+                    connectTimeout = ADVICE_API_TIMEOUT
+                    readTimeout = ADVICE_API_TIMEOUT
+                }
+                val br = BufferedReader(InputStreamReader(c.inputStream))
+                val sb = StringBuilder()
+                var line = br.readLine()
+                while (line != null){
+                    sb.append(line + "\n")
+                    line = br.readLine()
+                }
+
+                br.close()
+                return sb.toString()
+
+            } catch (e: UnknownHostException){
+                Log.e(TAG, "UnknownHostException")
+            }catch (e: MalformedURLException){
+                Log.e(TAG, "MalformedURLException")
+            }catch (e: IOException){
+                Log.e(TAG, "IOException")
+            }finally {
+                c?.disconnect()
+            }
+
+
+
+            // Read response
+            // Close connection
 
             // TODO: Define a HttpURLConnection and fetch data
             return JSON_ERROR
@@ -106,12 +175,23 @@ class HttpActivity : AppCompatActivity() {
 
         // TODO: Write a fun to manually parse a JSON string
         private fun parseJsonAdvice(raw: String?): String {
-            return ""
+            return try {
+                val adviceJson = JSONObject(raw)
+                adviceJson.getJSONObject("slip").getString("advice")
+            } catch (t: Throwable){
+                ""
+            }
         }
 
         // TODO: Write a fun to parse a JSON string using the Gson Library
         private fun parseJsonAdviceGson(raw: String?): String {
-            return ""
+            return try {
+                val parser = Gson()
+                val adviceMsg = parser.fromJson(raw, AdviceMsg::class.java)
+                return adviceMsg.getAdvice() ?: ""
+            }catch (t:Throwable){
+                ""
+            }
         }
     }
 }
