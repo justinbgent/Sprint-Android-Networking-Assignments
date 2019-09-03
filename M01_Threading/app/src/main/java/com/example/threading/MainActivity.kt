@@ -1,7 +1,6 @@
 package com.example.threading
 
 import android.os.AsyncTask
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -13,19 +12,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        fun publishProgress(progress: Int){
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                progressBar.setProgress(progress, true)
-            }
-        }
 
-        fun primes(length: Int): Sequence<Long>{
+        fun primes(): Sequence<Long>{
             var i = 0L
             return sequence{
                 generateSequence { i++ }
                     .filter { n -> n > 1 && ((2 until n).none {i -> n % i == 0L}) }
                     .forEach { yield(it)
-                        publishProgress((i/length.toFloat() *100).toInt())}
+                    }
             }
         }
 
@@ -46,7 +40,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun doInBackground(vararg p0: Unit?): String {
-                val primeNumbers = primes(16000).take(16000).joinToString(", ")
+                val primeNumbers = primes().take(16000).joinToString(", ")
                 return "Primes: $primeNumbers"
             }
 
@@ -58,24 +52,35 @@ class MainActivity : AppCompatActivity() {
                 super.onPostExecute(result)
             }
 
-            override fun onCancelled(result: String?) {
-                super.onCancelled(result)
-            }
-
             override fun onCancelled() {
+                this.cancel(true)
                 super.onCancelled()
             }
         }
 
+
+
         var task = MyAsyncTask()
-        task.execute(txt_primes.text.toString() as Unit)
-        task.cancel(true)
+        btn_start_generating.setOnClickListener {
+            task = MyAsyncTask()
+            task.execute()
+        }
+        btn_cancel.setOnClickListener {
+            txt_primes.visibility = View.VISIBLE
+            progressVisibility(false)
+            task.cancel(true)
+        }
+
+
 
     }
-
-
 
     override fun onStop() {
+//        if(asyncTask != null){
+//            asyncTask.cancel(true)
+//        }
         super.onStop()
     }
+
+
 }
