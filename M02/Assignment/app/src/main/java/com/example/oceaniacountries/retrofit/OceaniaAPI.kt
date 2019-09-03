@@ -6,5 +6,5 @@ import retrofit2.http.GET
 
 interface OceaniaAPI{
     @GET("oceania")
-    fun countryName(): Call<OceaniaCountry>
+    fun getCountries(): Call<OceaniaCountry>
 }
