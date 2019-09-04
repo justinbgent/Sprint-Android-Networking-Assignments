@@ -5,8 +5,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.lambdaschool.httpoperations.retrofit.JsonPlaceHolderApi
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
-import javax.security.auth.callback.Callback
 
 class HttpDeleteActivity : AppCompatActivity(), Callback<Void> {
     override fun onFailure(call: Call<Void>, t: Throwable) {
@@ -33,6 +33,6 @@ class HttpDeleteActivity : AppCompatActivity(), Callback<Void> {
 
     private fun deleteEmployee(){
         // TODO: delete the employee
-        employeesService.deleteEmployeeById("1").enqueue()
+        employeesService.deleteEmployeeById("1").enqueue(this)
     }
 }

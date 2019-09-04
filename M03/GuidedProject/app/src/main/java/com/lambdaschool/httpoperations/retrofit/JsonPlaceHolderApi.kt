@@ -29,11 +29,11 @@ interface JsonPlaceHolderApi {
     fun updateEmployee(@Body employee: Employee): Call<Employee>
 
     @DELETE("employees/{id}")
-    fun deleteEmployeeById(@Path ("id")employeeId: String): Call<Employee>
+    fun deleteEmployeeById(@Path ("id") id: String): Call<Void>
 
     class Factory{
         companion object{
-            val BASE_URL = "http://demo8143297.mockable.io/employees"
+            val BASE_URL = "http://demo8143297.mockable.io/"
             val gson = Gson()
 
             val logger: HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
@@ -41,7 +41,7 @@ interface JsonPlaceHolderApi {
                 level = HttpLoggingInterceptor.Level.BODY
             }
 
-            val okHttpClient: OkHttpClient = OkHttpClient().newBuilder()
+            val okHttpClient: OkHttpClient = OkHttpClient.Builder()
                 .addInterceptor(logger)
                 .retryOnConnectionFailure(false)
                 .readTimeout(10, TimeUnit.SECONDS)

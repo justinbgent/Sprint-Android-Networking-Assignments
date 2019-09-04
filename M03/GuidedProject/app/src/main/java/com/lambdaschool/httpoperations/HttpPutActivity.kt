@@ -7,13 +7,14 @@ import com.lambdaschool.httpoperations.model.Employee
 import com.lambdaschool.httpoperations.retrofit.JsonPlaceHolderApi
 import retrofit2.Call
 import retrofit2.Response
-import javax.security.auth.callback.Callback
 
-class HttpPutActivity : AppCompatActivity(), Callback<Employee> {
+class HttpPutActivity : AppCompatActivity(), retrofit2.Callback<Employee> {
     override fun onFailure(call: Call<Employee>, t: Throwable) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun onResponse(call: Call<Employee>, response: Response<Employee>) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         response.body()?.let {
             Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
         }
@@ -33,8 +34,8 @@ class HttpPutActivity : AppCompatActivity(), Callback<Employee> {
 
     private fun updateEmployee(){
         // TODO: Write the call to update an employee
-//        val employee = Employee.
-        employeesService.updateEmployee()
+        val employee = Employee("Brian", 6, 40, "Instructor")
+        employeesService.updateEmployee(employee).enqueue(this)
     }
 
 }

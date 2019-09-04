@@ -50,7 +50,6 @@ class HttpGetActivity : AppCompatActivity(), Callback<List<Employee>> {
     }
 
     override fun onFailure(call: Call<List<Employee>>, t: Throwable) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         Toast.makeText(this@HttpGetActivity, "Failed", Toast.LENGTH_SHORT).show()
     }
 
@@ -58,7 +57,6 @@ class HttpGetActivity : AppCompatActivity(), Callback<List<Employee>> {
         call: Call<List<Employee>>,
         response: Response<List<Employee>>
     ) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         response.body()?.let {
             Toast.makeText(this@HttpGetActivity, it.toString(), Toast.LENGTH_SHORT).show()
         }
