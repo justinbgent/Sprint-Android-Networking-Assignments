@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.oceaniacountries.model.OceaniaCountry
 import kotlinx.android.synthetic.main.recycler_list_item.view.*
 
-class RecyclerViewAdapter(val countriesInfo: MutableList<OceaniaCountry>): RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+class RecyclerViewAdapter(val countriesInfo: MutableList<OceaniaCountry>?): RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int

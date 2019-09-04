@@ -12,7 +12,7 @@ class OceaniaCountriesRetriever {
         internal const val BASE_URL = "https://restcountries.eu/rest/v2/region/"
     }
 
-    fun getOceaniaCountries(): Call<OceaniaCountry>{
+    fun getOceaniaCountries(): Call<MutableList<OceaniaCountry>>{
         val gson = GsonBuilder()
             .setLenient()
             .create()

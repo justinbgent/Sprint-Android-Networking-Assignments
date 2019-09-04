@@ -13,15 +13,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainActivity : AppCompatActivity(), Callback<OceaniaCountry> {
+class MainActivity : AppCompatActivity(), Callback<MutableList<OceaniaCountry>> {
     companion object{
-        var countries = mutableListOf<OceaniaCountry>()
-    }
-
-    override fun onFailure(call: Call<OceaniaCountry>, t: Throwable) {
-        t.printStackTrace()
-        val response = "failure; ${t.printStackTrace()}"
-        Toast.makeText(this@MainActivity, response, Toast.LENGTH_SHORT).show()
+        var countries: MutableList<OceaniaCountry>? = mutableListOf<OceaniaCountry>()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,13 +33,25 @@ class MainActivity : AppCompatActivity(), Callback<OceaniaCountry> {
         }
     }
 
-    override fun onResponse(call: Call<OceaniaCountry>, response: Response<OceaniaCountry>) {
+    override fun onFailure(call: Call<MutableList<OceaniaCountry>>, t: Throwable) {
+        t.printStackTrace()
+        val response = "failure; ${t.printStackTrace()}"
+        Toast.makeText(this@MainActivity, response, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onResponse(
+        call: Call<MutableList<OceaniaCountry>>,
+        response: Response<MutableList<OceaniaCountry>>
+    ) {
         if(response.isSuccessful){
             val oceaniaCountry = response.body()
-            countriesTextView.text = "${oceaniaCountry?.name}, ${oceaniaCountry?.capital}, ${oceaniaCountry?.alpha2Code}"
+            countries = oceaniaCountry
+            runOnUiThread{RecyclerViewAdapter(countries).notifyDataSetChanged()}
         }else{
             val response = "response not successful; ${response.errorBody().toString()}"
             Toast.makeText(this@MainActivity, response, Toast.LENGTH_SHORT).show()
         }
     }
+
+
 }
