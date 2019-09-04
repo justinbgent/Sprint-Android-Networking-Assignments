@@ -4,49 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".GetPickerActivity">
 
     <Button
-        android:id="@+id/btn_get"
-        android:text="Get"
+        android:id="@+id/btn_simple"
+        android:text="Simple Get"
         android:layout_margin="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/btn_post"
+        app:layout_constraintBottom_toTopOf="@+id/btn_path"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
 
     <Button
-        android:id="@+id/btn_post"
-        android:text="Post"
+        android:id="@+id/btn_path"
+        android:text="Get with Path Param"
         android:layout_margin="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/btn_get"
-        app:layout_constraintBottom_toTopOf="@id/btn_put"
+        app:layout_constraintTop_toBottomOf="@id/btn_simple"
+        app:layout_constraintBottom_toTopOf="@id/btn_query"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
 
     <Button
-        android:id="@+id/btn_put"
-        android:text="Put"
+        android:id="@+id/btn_query"
+        android:text="Get with Query Param"
         android:layout_margin="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/btn_post"
-        app:layout_constraintBottom_toTopOf="@id/btn_delete"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
-
-    <Button
-        android:id="@+id/btn_delete"
-        android:text="Delete"
-        android:layout_margin="8dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/btn_put"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_path"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
 
