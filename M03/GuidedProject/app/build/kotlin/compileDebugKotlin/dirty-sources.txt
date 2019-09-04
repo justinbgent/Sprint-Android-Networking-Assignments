@@ -1,0 +1,8 @@
+C:\Users\beast\Documents\LAMBDA\Lambda Week 5\Sprint-Android-Networking-Assignments\M03\GuidedProject\app\src\main\java\com\lambdaschool\httpoperations\GetPickerActivity.kt
+C:\Users\beast\Documents\LAMBDA\Lambda Week 5\Sprint-Android-Networking-Assignments\M03\GuidedProject\app\src\main\java\com\lambdaschool\httpoperations\HttpDeleteActivity.kt
+C:\Users\beast\Documents\LAMBDA\Lambda Week 5\Sprint-Android-Networking-Assignments\M03\GuidedProject\app\src\main\java\com\lambdaschool\httpoperations\HttpGetActivity.kt
+C:\Users\beast\Documents\LAMBDA\Lambda Week 5\Sprint-Android-Networking-Assignments\M03\GuidedProject\app\src\main\java\com\lambdaschool\httpoperations\HttpPostActivity.kt
+C:\Users\beast\Documents\LAMBDA\Lambda Week 5\Sprint-Android-Networking-Assignments\M03\GuidedProject\app\src\main\java\com\lambdaschool\httpoperations\HttpPutActivity.kt
+C:\Users\beast\Documents\LAMBDA\Lambda Week 5\Sprint-Android-Networking-Assignments\M03\GuidedProject\app\src\main\java\com\lambdaschool\httpoperations\MainActivity.kt
+C:\Users\beast\Documents\LAMBDA\Lambda Week 5\Sprint-Android-Networking-Assignments\M03\GuidedProject\app\src\main\java\com\lambdaschool\httpoperations\model\Employee.kt
+C:\Users\beast\Documents\LAMBDA\Lambda Week 5\Sprint-Android-Networking-Assignments\M03\GuidedProject\app\src\main\java\com\lambdaschool\httpoperations\retrofit\JsonPlaceHolderApi.kt
