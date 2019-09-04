@@ -5,8 +5,11 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.apapters.EverythingAdapter
+import com.example.myapplication.retrofit.ApiInterface
 
 class GetActivity : AppCompatActivity() {
+
+    lateinit var apiInterface: ApiInterface
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

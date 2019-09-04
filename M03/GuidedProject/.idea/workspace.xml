@@ -5,23 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab9d05af-f279-49f7-be7d-71fabfb2eddb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Assignment/app/src/main/java/com/example/myapplication/DeleteActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Assignment/app/src/main/java/com/example/myapplication/GetActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Assignment/app/src/main/java/com/example/myapplication/GetPickerActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Assignment/app/src/main/java/com/example/myapplication/PostActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Assignment/app/src/main/java/com/example/myapplication/PutActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Assignment/app/src/main/java/com/example/myapplication/apapters/EverythingAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Assignment/app/src/main/java/com/example/myapplication/model/Employee.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Assignment/app/src/main/java/com/example/myapplication/retrofit/ApiInterface.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Assignment/app/src/main/res/layout/activity_delete.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Assignment/app/src/main/res/layout/activity_get.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Assignment/app/src/main/res/layout/activity_get_picker.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Assignment/app/src/main/res/layout/activity_post.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Assignment/app/src/main/res/layout/activity_put.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Assignment/app/src/main/res/layout/recycler_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Assignment/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../Assignment/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Assignment/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Assignment/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Assignment/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Assignment/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment/app/src/main/java/com/example/myapplication/GetActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Assignment/app/src/main/java/com/example/myapplication/GetActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment/app/src/main/java/com/example/myapplication/retrofit/ApiInterface.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Assignment/app/src/main/java/com/example/myapplication/retrofit/ApiInterface.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
