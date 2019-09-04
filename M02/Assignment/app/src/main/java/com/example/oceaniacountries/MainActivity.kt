@@ -14,19 +14,12 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivity : AppCompatActivity(), Callback<MutableList<OceaniaCountry>> {
-    companion object{
-        var countries: MutableList<OceaniaCountry>? = mutableListOf<OceaniaCountry>()
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        recycler_list.setHasFixedSize(true)
-        val manager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        val adapter = RecyclerViewAdapter(countries)
-        recycler_list.layoutManager = manager
-        recycler_list.adapter = adapter
+
 
         fetchCountriesButton.setOnClickListener {
             OceaniaCountriesRetriever().getOceaniaCountries().enqueue(this)
@@ -45,8 +38,11 @@ class MainActivity : AppCompatActivity(), Callback<MutableList<OceaniaCountry>> 
     ) {
         if(response.isSuccessful){
             val oceaniaCountry = response.body()
-            countries = oceaniaCountry
-            runOnUiThread{RecyclerViewAdapter(countries).notifyDataSetChanged()}
+            recycler_list.setHasFixedSize(true)
+            val manager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+            val adapter = RecyclerViewAdapter(oceaniaCountry)
+            recycler_list.layoutManager = manager
+            recycler_list.adapter = adapter
         }else{
             val response = "response not successful; ${response.errorBody().toString()}"
             Toast.makeText(this@MainActivity, response, Toast.LENGTH_SHORT).show()
