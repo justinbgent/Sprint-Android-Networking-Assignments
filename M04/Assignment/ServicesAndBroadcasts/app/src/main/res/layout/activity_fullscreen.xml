@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,7 +10,6 @@
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
          TextureView, etc. -->
-    <!--TODO: S04M04-0 Replace text view with image view-->
     <ImageView
         android:id="@+id/fullscreen_content"
         android:adjustViewBounds="true"
@@ -41,30 +41,12 @@
             tools:ignore="UselessParent">
 
             <Button
-                android:id="@+id/myImageDownload"
+                android:id="@+id/dummy_button"
                 style="?metaButtonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="My Download" />
-
-            <Button
-                android:id="@+id/downloadManagerButton"
-                style="?metaButtonBarButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="OS Download"
-                />
-
-            <Button
-                android:id="@+id/showDownloadsButton"
-                style="?metaButtonBarButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="showDownload"
-                android:text="Show Downloads"/>
+                android:text="Download And Display" />
 
         </LinearLayout>
     </FrameLayout>
