@@ -6,8 +6,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import com.example.myapplication.model.Employee
+import kotlinx.android.synthetic.main.recycler_item.view.*
 
-class EverythingAdapter(private val countriesInfo: MutableList<OceaniaCountry>?): RecyclerView.Adapter<EverythingAdapter.ViewHolder>() {
+class EverythingAdapter(private val employees: List<Employee>?): RecyclerView.Adapter<EverythingAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -15,21 +17,23 @@ class EverythingAdapter(private val countriesInfo: MutableList<OceaniaCountry>?)
         return ViewHolder(view)
     }
 
-    override fun getItemCount(): Int = countriesInfo?.size ?: 0
+    override fun getItemCount(): Int = employees?.size ?: 0
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        if (countriesInfo != null){
-            val country = countriesInfo[position]
-            holder.countryName.text = country.name
-            holder.countryCapital.text = country.capital
-            holder.countryCode.text = country.alpha2Code
+        if (employees != null){
+            val employee = employees[position]
+            holder.name.text = employee.name
+            holder.title.text = employee.title
+            holder.age.text = employee.age.toString()
+            holder.id.text = employee.id.toString()
         }
 
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
-        val countryName: TextView = view.country_name
-        val countryCapital: TextView = view.country_capital
-        val countryCode: TextView = view.country_alpha_code
+        val name: TextView = view.txt_name
+        val title: TextView = view.txt_title
+        val age: TextView = view.txt_age
+        val id: TextView = view.txt_id
     }
 }
